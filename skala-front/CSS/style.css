@@ -30,6 +30,7 @@ a {
 a:hover {
     color: #3b3939;
     text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -44,6 +45,8 @@ a:hover {
     padding: 20px;
     margin: 20px;
     text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 table {
@@ -84,6 +87,7 @@ input[type="reset"] {
     font-size: 10px;
     cursor: pointer;
     margin-right: 10px;
+    transition: background-color 0.3s ease;
 }
 
 input[type="submit"] {
@@ -102,4 +106,74 @@ input[type="reset"] {
 
 input[type="reset"]:hover {
     background-color: #dddddd;
+}
+
+#바로가기 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.content {
+    display: flex;
+    gap: 20px;
+}
+
+.content main {
+    flex: 2;
+}
+
+.content aside {
+    flex: 1;
+}
+
+@media (max-width: 786px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .content main,
+    .content aside {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    #바로가기 {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 786px) {
+    .trip-card {
+        grid-template-columns: 1fr; /* 한 열로 변경 */
+    }
+}
+
+.card-img {
+    width: 350px;
+    height: 500px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-img:hover {
+    transform: translateY(-10px);
+}
+
+.fadeIn {
+    opacity: 0;
+    animation: fadeIn 3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
