@@ -1,35 +1,52 @@
-@import './base.css';
+/* src/assets/main.css */
+:root {
+  --color-primary: #4c6ef5;
+  --color-primary-dark: #364fc7;
+  --color-bg: #f4f6fb;
+  --color-surface: #ffffff;
+  --color-border: #e5e8f0;
+  --color-text: #1a1d29;
+  --color-text-muted: #6b7280;
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  --color-hot: #ff6b6b;
+  --color-hot-bg: #fff0f0;
+  --color-warm: #ffa94d;
+  --color-warm-bg: #fff4e6;
+  --color-mild: #51cf66;
+  --color-mild-bg: #ebfbee;
+  --color-cool: #4dabf7;
+  --color-cool-bg: #e7f5ff;
+  --color-cold: #748ffc;
+  --color-cold-bg: #edf2ff;
+  --color-freezing: #364fc7;
+  --color-freezing-bg: #dbe4ff;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 3px rgba(20, 20, 43, 0.06);
+  --shadow-md: 0 4px 16px rgba(20, 20, 43, 0.08);
+  --shadow-lg: 0 12px 32px rgba(20, 20, 43, 0.12);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Segoe UI', Roboto, sans-serif;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+* {
+  box-sizing: border-box;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }

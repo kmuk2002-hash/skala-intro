@@ -8,7 +8,6 @@ import { fetchWeatherByCity } from '../api/weatherApi.js'
 
 const router = useRouter()
 
-// 조회할 도시 목록 (한글 이름이면 영문/한글 모두 시도 가능)
 const cityNames = ['Seoul', 'Suwon', 'Busan', 'Gwangju', 'Daegu', 'Daejeon']
 
 const weatherList = ref([])
@@ -52,14 +51,18 @@ const showDetail = (id) => {
 </script>
 
 <template>
-  <div class="page-wrapper">
-    <p v-if="isLoading">날씨 데이터를 불러오는 중...</p>
+  <div class="page">
+    <section class="page-intro">
+      <h1 class="page-title">지역별 실시간 날씨</h1>
+      <p class="page-subtitle">도시를 검색하거나 카드를 선택해 상세 정보를 확인하세요.</p>
+    </section>
+
+    <p v-if="isLoading" class="loading-text">날씨 데이터를 불러오는 중...</p>
     <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
 
     <BaseDashboardCard>
       <template v-slot:SearchBar>
         <SearchBar :search-query="searchQuery" @updateQuery="searchQuery = $event" />
-        <div class="search-status">검색중인 도시: {{ searchQuery }}</div>
       </template>
       <template v-slot:WeatherCard>
         <WeatherCard
@@ -69,36 +72,64 @@ const showDetail = (id) => {
         />
       </template>
     </BaseDashboardCard>
-    <div class="status-bar">{{ selectedCityInfo }}가 선택되었습니다.</div>
+
+    <div class="status-toast">
+      <span class="status-dot"></span>
+      {{ selectedCityInfo }}가 선택되었습니다.
+    </div>
   </div>
 </template>
 
 <style scoped>
-.page-wrapper {
+.page {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-5);
 }
 
-.search-status {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #666;
+.page-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 4px;
 }
 
-.status-bar {
-  width: fit-content;
-  max-width: 400px;
-  background: rgba(17, 209, 46, 0.652);
-  border: 1px solid #0aee56;
-  border-radius: 8px;
-  padding: 14px 16px;
-  text-align: center;
-  font-weight: 600;
+.page-subtitle {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.loading-text {
+  color: var(--color-text-muted);
+  font-size: 14px;
 }
 
 .error-message {
-  color: #e03131;
+  color: var(--color-hot);
   font-weight: 600;
+  font-size: 14px;
+}
+
+.status-toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 10px 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-mild);
+  flex-shrink: 0;
 }
 </style>

@@ -273,9 +273,18 @@ getters/변환 로직 사용 시 판정 기준(원본 값)과 화면 표시용 �
 
 #과제 (230pg)
 
-먼저 axios를 설치한 후 OpenWeatherMap에 가입하여 API Key를 발급받았다. -> .env파일을 생성해 api키를 보호하며 명시해 두었다. ->src의 하위컴포넌트로 api를 통해 데이터를 불러오는 컴포넌트를 하나 새로 생성했다.(weatherApi/js) -> WeatherParent.vue/WeatherDetailView.vue에서 mock data를 실제 api 응답으로 교체했다. ->
+먼저 axios를 설치한 후 OpenWeatherMap에 가입하여 API Key를 발급받았다. -> .env파일을 생성해 api키를 보호하며 명시해 두었다. ->src의 하위컴포넌트로 api를 통해 데이터를 불러오는 컴포넌트를 하나 새로 생성했다.(weatherApi/js) -> WeatherParent.vue/WeatherDetailView.vue에서 mock data를 실제 api 응답으로 교체했다.
+
+## 추가로 적용한 것
+
+3시간, 5일 단위의 날씨 예측, 대기질 확인 배지를 추가했다. 때문에 기존 weatherApi.js에 3개의 함수를 추가했다(기간 예보 관련, 대기질 관련, 도시를 위경도로 반환하는 함수)
 
 주의할 점->.env를 통해 api 보안을 진행할 때 api키는 ""로 감싸지 않고 앞뒤 공백도 없이 key만 입력해야한다.(따옴표나 공백도 키로 인식하기 때문)/따옴표로 감싸서 오류가 발생했다
 
 #과제 (249pg)
 먼저 element-plus를 설치한 후 main.js에 사용할 라이브러리로 임포트한다. ->우리가 사용한 건 Element Plus이고 해당 사이트에서 사용할 요소와 코드문법을 확인할 수 있다. ->나는 SearchBar에 el-input을, WeatherCard.vue에 el-card, el-tag, el-button을, UnitToggler에 el-button을 적용했다.->이 과정에서 WeatherCard.vue에 적용한 el-tag는 원래 코드에서처럼 status를 클래스로 나누어 클래스별로 표현하는 형식이 아니라 미리 정해둔 5가지의 상태(success, warning, danger, info, primary)에 맞게 스타일이 달라지는 형태기때문에 기존 v-if로 판정과 표현할 클래스를 동시에 구분하던 형태에서 판정 후 타입을 반환하는 함수를 정의하고 그 함수를 통해 상태를 결정하는 방식으로 로직이 분리되었다.
+
+#과제 (274pg)
+우선 npm run lint를 이용해 에러를 잡았다. 총 34개의 에러가 발생했고 이는 모두 코드챌린지과정에서 생긴 오류였다.(파일이름을 한 단어로 지은 것, 사용하지 않는 변수를 임포트 한 것) -> 이는 실습과제와는 무관하고 전부 고치는데 드는 시간 소요가 컸기에 그냥 무시하고 과제를 진행했다.
+
+실제 배포 전 클로드의 도움으로 전체적인 코드의 스타일을 더 전문적으로 보일 수 있게 수정했다.
